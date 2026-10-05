@@ -26,15 +26,35 @@
             key-positions = <0 1>;
             bindings = <&kp TAB>;
         };
+    };
 
-        Ctrl_A {
-            bindings = <&kp RC(A)>;
-            key-positions = <30 11>;
+    macros {
+        ctrl_a: Ctrl_A {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RCTRL>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp RIGHT_CONTROL>;
+
+            label = "CTRL_A";
         };
 
-        Shift_Z {
-            bindings = <&kp RS(Z)>;
-            key-positions = <30 21>;
+        ctrl_z: ctrl_z {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp RIGHT_SHIFT>,
+                <&macro_tap>,
+                <&kp Z>,
+                <&macro_release>,
+                <&kp RIGHT_SHIFT>;
+
+            label = "CTRL_Z";
         };
     };
 
@@ -62,8 +82,8 @@
         layer_2 {
             bindings = <
 &kp ESCAPE  &none     &kp UP    &none      &none  &none  &none    &none          &none        &none  &none
-&none       &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none  &none    &kp HOME       &kp PAGE_UP  &none
-&none       &none     &none     &none      &none  &none  &kp END  &kp PAGE_DOWN  &none        &none
+&ctrl_a     &kp LEFT  &kp DOWN  &kp RIGHT  &none  &none  &none    &kp HOME       &kp PAGE_UP  &none
+&ctrl_z     &none     &none     &none      &none  &none  &kp END  &kp PAGE_DOWN  &none        &none
 &none       &none     &none     &none             &none           &none          &none        &none
             >;
         };
